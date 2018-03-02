@@ -2,7 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Hello, {{user.username}}!</title>
+        {% if title %}
+        <title>{{ title }}!</title>
+        {% else %}
+        <title>Welcome!</title>
+        {% endif %}
     </head>
     <body>
         <h1>Hello, {{user.username}}!</h1>
