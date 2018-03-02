@@ -1,6 +1,8 @@
 from flask import Flask, render_template
+from forms import LoginForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'only-brian-knows'
 
 @app.route('/')
 @app.route('/index')
@@ -44,5 +46,10 @@ def club():
         }
     ]
     return render_template('club.html', plans = plans)
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', title = 'Sign In', form = form)
 
 app.run()
