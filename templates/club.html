@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% if title %}
+        <title>{{ title }}!</title>
+        {% else %}
+        <title>Welcome!</title>
+        {% endif %}
+    </head>
+<body>
+    {% for plan in plans %}
+    <div>
+        <h1>{{plan.title}}</h1>
+        {{plan.price}}
+    </div>
+    {% endfor %}
+</body>
+</html>
