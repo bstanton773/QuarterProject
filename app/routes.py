@@ -2,25 +2,13 @@ from app import app
 from app.forms import LoginForm
 from flask import render_template, redirect, flash
 
+from app import Post
+
 @app.route('/')
 @app.route('/index')
 def index():
     user = {'username': 'Brian'}
-    posts = [
-        {
-            'title': {'main': 'I hate Python', 'sub': 'this is a sad story'},
-            'body': 'Python can do every thing. However, it is very hard'
-        },
-        {
-            'title': {'main': 'I love Python', 'sub': 'this is a happy story'},
-            'body': 'Python can do every thing. However, it is very easy'
-        },
-        {
-            'title': {'main': 'I love C++', 'sub': 'this is a happy story'},
-            'body': 'C++ can do some things. However, it is very silly'
-        }
-    ]
-
+    posts = Post.query.all()
     return render_template('index.html', user=user, posts = posts, title='A title')
 
 @app.route('/club')
