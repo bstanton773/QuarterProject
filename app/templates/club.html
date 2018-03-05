@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for plan in plans %}
-    <div>
-        <h1>{{plan.title}}</h1>
-        {{plan.price}}
-    </div>
-    {% endfor %}
+ {% for plan in plans %}
+        <div>
+            <h1>{{plan.membership}}</h1>
+            {{plan.price}}
+        </div>
+        {% endfor %}
 {% endblock %}

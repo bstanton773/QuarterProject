@@ -34,3 +34,12 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+
+class Plans(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    membership = db.Column(db.String(60))
+    price = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<Plans {}>'.format(self.membership)

@@ -3,7 +3,7 @@ from app.forms import LoginForm, RegistrationForm
 from flask import render_template, redirect, flash, url_for
 from flask_login import current_user, login_user, logout_user
 
-from app.models import Post, User
+from app.models import Post, User, Plans
 
 @app.route('/')
 @app.route('/index')
@@ -14,24 +14,7 @@ def index():
 
 @app.route('/club')
 def club():
-    plans = [
-        {
-            'title': 'Platinum',
-            'price': 1000
-        },
-        {
-            'title': 'Gold',
-            'price': 750
-        },
-        {
-            'title': 'Silver',
-            'price': 500
-        },
-        {
-            'title': 'Bronze',
-            'price': 250
-        }
-    ]
+    plans = Plans.query.all()
     return render_template('club.html', plans = plans)
 
 @app.route('/login', methods = ['GET', 'POST'])
