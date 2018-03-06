@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
- {% for plan in plans %}
-        <div>
-            <h1>{{plan.membership}}</h1>
-            {{plan.price}}
-        </div>
-        {% endfor %}
+
+    {% for plan in plans %}
+        {% if current_user.is_anonymous %}
+            <div>
+                <h1>{{plan.membership}}</h1>
+                {{plan.price}}
+            </div>
+        {% else %}
+            <div>
+                <h1>{{plan.membership}}</h1>
+                {{plan.price * 4//5}}
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
