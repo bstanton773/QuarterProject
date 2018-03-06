@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <h1>Hello, {{user.username}}!</h1>
+        {% if current_user.is_anonymous %}
+        <h1>Welcome to the club page!</h1>
+        {% else %}
+        <h1>Welcome back, {{user.username}}</h1>
+        {% endif %}
+
         {% for post in posts %}
         <div>
             <h1>{{post.title}}</h1>

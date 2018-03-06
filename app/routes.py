@@ -8,9 +8,9 @@ from app.models import Post, User, Plans
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Brian'}
+    user = current_user
     posts = Post.query.all()
-    return render_template('index.html', user=user, posts = posts, title='A title')
+    return render_template('index.html', user=user, posts = posts, title='Stanton Club')
 
 @app.route('/club')
 def club():
@@ -25,7 +25,6 @@ def login():
     if form.validate_on_submit():  # post and submit validate
         # get the user from data base use code
         user = User.query.filter_by(username=form.username.data).first()
-        flash('Hello, {}!'.format(form.username.data))
 
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
