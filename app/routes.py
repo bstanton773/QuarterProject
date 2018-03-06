@@ -25,6 +25,7 @@ def login():
     if form.validate_on_submit():  # post and submit validate
         # get the user from data base use code
         user = User.query.filter_by(username=form.username.data).first()
+        flash('Hello, {}!'.format(form.username.data))
 
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
