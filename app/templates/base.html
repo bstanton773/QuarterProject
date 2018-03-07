@@ -7,32 +7,35 @@
         {% else %}
         <title>Welcome!</title>
         {% endif %}
+        <link href="static/stylesheet.css" rel="stylesheet">
     </head>
-<body>
-    <div><a href="/index">Home</a></div>
-    <div><a href="/club">Club Memberships</a></div>
+    <body>
+        <div class="wrapper">
+            <div class="main_content">
+                <div class="links">
+                    <div class=”flash”>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <p style="margin-top: 0px;">{{ messages }}</lp>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <a href="/index">Home</a>
+                    <a href="/club">Club Memberships</a>
+                    {% if current_user.is_anonymous %}
+  	                <a href="{{ url_for('login') }}">Login</a>
+  	                {% else %}
+  	                <a href="{{ url_for('logout') }}">Logout</a>
+  	                {% endif %}
+                </div>
+                <hr>
 
-    {% if current_user.is_anonymous %}
-    <a href="{{ url_for('login') }}">Login</a>
-    {% else %}
-    <a href="{{ url_for('logout') }}">Logout</a>
-    {% endif %}
-
-    <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ messages }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        {% endwith %}
-    </div>
-    <hr>
-    {% block content %}{% endblock %}
-    <hr>
-        <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script></p>
-
-</body>
+                {% block content %}{% endblock %}
+                <hr>
+                <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script></p>
+            </div>
+        </div>
+    </body>
 </html>

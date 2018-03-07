@@ -7,11 +7,22 @@
         <h1>Welcome back, {{user.username}}</h1>
         {% endif %}
 
-        {% for post in posts %}
-        <div>
-            <h1>{{post.title}}</h1>
-            <h3>{{post.subtitle}}</h3>
-            {{post.body}}
+        <div class="posts">
+             <div class="main_post">
+                 <div class="image_ph">
+                 </div>
+                 <h1>Big Sale!</h1>
+                 <h3>This month only</h3>
+                 <p>All memberships are 20% off if you have an online account</p>
+             </div>
+             <div class="old_posts">
+                 <h1>New Website</h1>
+                 <h3>Welcome!</h3>
+                 <p>We are happy to announce the launch of our new website for our club!</p>
+                 <hr>
+                 <h1>New Website</h1>
+                 <h3>Welcome!</h3>
+                 <p>We are happy to announce the launch of our new website for our club!</p>
+             </div>
         </div>
-        {% endfor %}
 {% endblock %}
